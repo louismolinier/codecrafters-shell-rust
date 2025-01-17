@@ -5,13 +5,13 @@ fn is_in_folder(folder: &str, arg: &str) -> bool {
     return path.exists() && path.is_file();
 }
 
-pub fn type_builtin(args: Vec<&str>, path: Vec<&str>) {
+pub fn type_builtin(args: Vec<&str>, paths: Vec<&str>) {
     for i in 1..args.len() {
         match args[i] {
             "echo" | "exit" | "type" => println!("{} is a shell builtin", args[i]),
             _ => {
                 let mut found = false;
-                for folder in &path {
+                for folder in &paths {
                     if is_in_folder(folder, args[i]) {
                         println!("{} is {}/{}", args[i], folder, args[i]);
                         found = true;
