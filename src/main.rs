@@ -9,4 +9,8 @@ fn main() {
     let stdin = io::stdin();
     let mut input = String::new();
     stdin.read_line(&mut input).unwrap();
+    input.pop();
+
+    let args: Vec<&str> = input.split(" ").collect();
+    println!("{}: command not found", args[0]);
 }
