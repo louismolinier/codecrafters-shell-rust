@@ -1,3 +1,4 @@
+use std::env;
 #[allow(unused_imports)]
 use std::io::{self, Write};
 use std::process::ExitCode;
@@ -21,6 +22,8 @@ fn main() -> ExitCode {
         stdin.read_line(&mut input).unwrap();
         input.pop();
 
+        let path_str = env::var("PATH").unwrap_or("".to_string());
+        let path: Vec<&str> = path_str.split(":").collect();
         let args: Vec<&str> = input.split_whitespace().collect();
         if args.len() != 0 {
             match args[0] {
@@ -31,7 +34,7 @@ fn main() -> ExitCode {
                     }
                 }
                 "echo" => echo(args),
-                "type" => type_builtin(args),
+                "type" => type_builtin(args, path),
                 _ => println!("{}: command not found", args[0]),
             }
         }
