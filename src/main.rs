@@ -8,6 +8,9 @@ use exit::exit;
 mod echo;
 use echo::echo;
 
+mod r#type;
+use r#type::type_builtin;
+
 fn main() -> ExitCode {
     loop {
         print!("$ ");
@@ -28,6 +31,7 @@ fn main() -> ExitCode {
                     }
                 }
                 "echo" => echo(args),
+                "type" => type_builtin(args),
                 _ => println!("{}: command not found", args[0]),
             }
         }
