@@ -5,6 +5,9 @@ use std::process::ExitCode;
 mod exit;
 use exit::exit;
 
+mod echo;
+use echo::echo;
+
 fn main() -> ExitCode {
     loop {
         print!("$ ");
@@ -24,6 +27,7 @@ fn main() -> ExitCode {
                         return exit_result.1;
                     }
                 }
+                "echo" => echo(args),
                 _ => println!("{}: command not found", args[0]),
             }
         }
