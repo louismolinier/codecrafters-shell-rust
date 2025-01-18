@@ -8,7 +8,7 @@ fn is_in_folder(folder: &str, arg: &str) -> bool {
 pub fn type_builtin(args: Vec<&str>, paths: Vec<&str>) {
     for i in 1..args.len() {
         match args[i] {
-            "echo" | "exit" | "type" => println!("{} is a shell builtin", args[i]),
+            "echo" | "exit" | "type" | "pwd" => println!("{} is a shell builtin", args[i]),
             _ => {
                 let mut found = false;
                 for folder in &paths {
