@@ -15,6 +15,9 @@ use r#type::type_builtin;
 mod exec_non_builtin;
 use exec_non_builtin::exec_non_builtin;
 
+mod pwd;
+use pwd::pwd;
+
 fn main() -> ExitCode {
     loop {
         print!("$ ");
@@ -39,6 +42,7 @@ fn main() -> ExitCode {
                 }
                 "echo" => echo(args),
                 "type" => type_builtin(args, paths),
+                "pwd" => pwd(args),
                 _ => exec_non_builtin(args, paths),
             }
         }
