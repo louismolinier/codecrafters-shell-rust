@@ -1,10 +1,5 @@
-use std::path::Path;
+use crate::utils::is_in_folder;
 use std::process::Command;
-
-fn is_in_folder(folder: &str, arg: &str) -> bool {
-    let path = Path::new(folder).join(arg);
-    return path.exists() && path.is_file();
-}
 
 pub fn exec_non_builtin(args: Vec<&str>, paths: Vec<&str>) {
     let command = args[0];

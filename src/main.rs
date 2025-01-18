@@ -18,6 +18,8 @@ use exec_non_builtin::exec_non_builtin;
 mod pwd;
 use pwd::pwd;
 
+mod utils;
+
 fn main() -> ExitCode {
     loop {
         print!("$ ");

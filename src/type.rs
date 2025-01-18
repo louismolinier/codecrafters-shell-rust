@@ -1,9 +1,4 @@
-use std::path::Path;
-
-fn is_in_folder(folder: &str, arg: &str) -> bool {
-    let path = Path::new(folder).join(arg);
-    return path.exists() && path.is_file();
-}
+use crate::utils::is_in_folder;
 
 pub fn type_builtin(args: Vec<&str>, paths: Vec<&str>) {
     for i in 1..args.len() {
