@@ -20,6 +20,9 @@ use pwd::pwd;
 
 mod utils;
 
+mod cd;
+use cd::cd;
+
 fn main() -> ExitCode {
     loop {
         print!("$ ");
@@ -45,6 +48,7 @@ fn main() -> ExitCode {
                 "echo" => echo(args),
                 "type" => type_builtin(args, paths),
                 "pwd" => pwd(args),
+                "cd" => cd(args),
                 _ => exec_non_builtin(args, paths),
             }
         }
