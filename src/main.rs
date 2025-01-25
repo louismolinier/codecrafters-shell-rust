@@ -23,6 +23,9 @@ mod utils;
 mod cd;
 use cd::cd;
 
+mod parse_command_args;
+use parse_command_args::parse_command_args;
+
 fn main() -> ExitCode {
     loop {
         print!("$ ");
@@ -36,7 +39,7 @@ fn main() -> ExitCode {
         let path_env = env::var("PATH").unwrap_or("".to_string());
         let paths: Vec<&str> = path_env.split(":").collect();
 
-        let args: Vec<&str> = input.split_whitespace().collect();
+        let args: Vec<&str> = parse_command_args(&input);
         if args.len() != 0 {
             match args[0] {
                 "exit" => {
