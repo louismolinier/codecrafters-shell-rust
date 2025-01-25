@@ -9,11 +9,13 @@ pub fn parse_command_args(input: &str) -> Vec<&str> {
             }
             j = i;
         } else if input.chars().nth(i).unwrap() == '\'' {
-            j = i + 1;
+            i += 1;
+            j = i;
             while input.chars().nth(j).unwrap() != '\'' {
                 j += 1;
             }
-            result.push(&input[i + 1..j]);
+            result.push(&input[i..j]);
+            j += 1;
         } else {
             j = i;
             while j < input.len() && input.chars().nth(j).unwrap() != ' ' {
@@ -21,7 +23,7 @@ pub fn parse_command_args(input: &str) -> Vec<&str> {
             }
             result.push(&input[i..j]);
         }
-        i = j + 1;
+        i = j;
     }
     return result;
 }
