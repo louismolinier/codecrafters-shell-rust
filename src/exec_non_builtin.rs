@@ -1,9 +1,9 @@
 use crate::utils::is_in_folder;
 use std::process::Command;
 
-pub fn exec_non_builtin(args: Vec<&str>, paths: Vec<&str>) {
-    let command = args[0];
-    let command_args = args[1..].to_vec();
+pub fn exec_non_builtin(args: &Vec<String>, paths: Vec<&str>) {
+    let command = &args[0];
+    let command_args = &args[1..];
     let mut found = false;
     for folder in &paths {
         if is_in_folder(folder, command) {

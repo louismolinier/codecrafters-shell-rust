@@ -1,6 +1,6 @@
 use std::process::ExitCode;
 
-pub fn exit(args: Vec<&str>) -> (bool, ExitCode) {
+pub fn exit(args: &Vec<String>) -> (bool, ExitCode) {
     match args.len() {
         1 => return (true, ExitCode::from(0)),
         2 => match args[1].parse::<u8>() {

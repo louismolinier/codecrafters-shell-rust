@@ -1,4 +1,4 @@
-pub fn echo(args: Vec<&str>) {
+pub fn echo(args: &Vec<String>) {
     for i in 1..args.len() - 1 {
         print!("{} ", args[i]);
     }
